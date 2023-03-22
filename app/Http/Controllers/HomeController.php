@@ -24,7 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $workspace = Workspace::all();
+        return view('home', compact('workspace'));
     }
 
     public function store(Request $request)
