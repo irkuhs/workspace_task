@@ -58,7 +58,7 @@
                                     <form>
                                         <div class="mb-3">
                                             <label class="col-form-label">Name</label>
-                                            <input type="text" class="form-control" id="name">
+                                            <input type="text" class="form-control" name="name" placeholder="Workspace Name">
                                         </div>
                                         <div class="mb-3">
                                             <label class="col-form-label">Date</label>
@@ -66,7 +66,11 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="col-form-label">Status:</label>
-                                            <input type="text" class="form-control" id="status"></textarea>
+                                            <select name="nation" class="form-control" >
+                                                <option selected value="" disabled selected hidden></option>
+                                                <option value="Done">Done</option>
+                                                <option value="Pending">Pending</option>
+                                            </select>
                                           </div>
                                       </form>
                                 </div>
