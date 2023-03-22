@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Workspace;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,5 +25,20 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function store(Request $request)
+    {
+        //dd($request->all());
+        Workspace::create(
+            [
+                'user_id'=> auth()->user()->id,
+                'name'=> $request-> name,
+                'datetime' => $request -> datetime,
+                'status' => $request->status,
+            ]
+            );
+
+            return to_route("home");
     }
 }
