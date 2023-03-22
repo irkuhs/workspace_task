@@ -21,26 +21,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ( $workspace as $key => $workspace)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
+                                        <th scope="row">{{ $key+1}}</th>
+                                        <td>{{ $workspace->name}}</td>
+                                        <td>{{ $workspace->datetime}}</td>
+                                        @if ($workspace->status == '0')
+                                            <td>Done</td>
+                                            @else
+                                            <td>Pending</td>
+                                        @endif
+                                        <td>
+                                            <a href="" button type="button" class="btn btn-info">Edit</button></a>
+                                            <a href="" button type="button" class="btn btn-warning">Delete</button></a>
+                                            <a href="" button type="button" class="btn btn-danger">Show</button></a>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
