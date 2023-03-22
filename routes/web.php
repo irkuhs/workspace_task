@@ -21,6 +21,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//workspace
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('home.store');
