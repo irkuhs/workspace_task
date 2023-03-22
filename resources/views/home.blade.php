@@ -51,11 +51,12 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="addWorkspaceModal">Workspace Task Baru</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h1 class="modal-title fs-5" id="addWorkspaceModal">Workspace Task Baru</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="POST" action="{{ route('home.store') }}">
+                                        @csrf
                                         <div class="mb-3">
                                             <label class="col-form-label">Name</label>
                                             <input type="text" class="form-control" name="name" placeholder="Workspace Name">
@@ -66,18 +67,18 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="col-form-label">Status:</label>
-                                            <select name="nation" class="form-control" >
+                                            <select name="status" class="form-control" id="status">
                                                 <option selected value="" disabled selected hidden></option>
-                                                <option value="Done">Done</option>
-                                                <option value="Pending">Pending</option>
+                                                <option value="0">Done</option>
+                                                <option value="1">Pending</option>
                                             </select>
-                                          </div>
-                                      </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-outline-primary">Add</button>
-                                    <button type="button" class="btn btn-outline-danger">Clear</button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-outline-primary">Add</button>
+                                            <button type="button" class="btn btn-outline-danger">Clear</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
