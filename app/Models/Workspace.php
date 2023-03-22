@@ -18,5 +18,8 @@ class Workspace extends Model
         'status'
     ];
 
-
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
