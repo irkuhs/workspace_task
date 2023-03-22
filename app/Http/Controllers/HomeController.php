@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Workspace;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $workspace = Workspace::all();
+        $workspace = Workspace::where('user_id', auth()->user()->id)->get();
         return view('home', compact('workspace'));
     }
 
