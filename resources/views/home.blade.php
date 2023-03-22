@@ -32,9 +32,9 @@
                                             <td>Pending</td>
                                         @endif
                                         <td>
-                                            <a href="" button type="button" class="btn btn-info">Edit</button></a>
-                                            <a href="" button type="button" class="btn btn-warning">Delete</button></a>
-                                            <a href="" button type="button" class="btn btn-danger">Show</button></a>
+                                            <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
+                                            <a href="" button type="button" class="btn btn-outline-warning">Delete</button></a>
+                                            <a href="" button type="button" class="btn btn-outline-danger">Show</button></a>
                                         </td>
                                     </tr>
                                     @endforeach
