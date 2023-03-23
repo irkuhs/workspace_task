@@ -22,4 +22,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //workspace
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('home.store');
+Route::post('/workspace/store', [App\Http\Controllers\WorkspaceController::class, 'store'])->name('workspace.store');
+
+//task
+Route::get('/task/show', [App\Http\Controllers\TaskController::class, 'show'])->name('task.show');
+Route::get('/task/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
+Route::post('/task/store', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
