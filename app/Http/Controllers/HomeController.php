@@ -28,19 +28,4 @@ class HomeController extends Controller
         $workspace = Workspace::where('user_id', auth()->user()->id)->get();
         return view('home', compact('workspace'));
     }
-
-    public function store(Request $request)
-    {
-        //dd($request->all());
-        Workspace::create(
-            [
-                'user_id'=> auth()->user()->id,
-                'name'=> $request-> name,
-                'datetime' => $request -> datetime,
-                'status' => $request->status,
-            ]
-            );
-
-            return to_route("home");
-    }
 }
