@@ -34,7 +34,7 @@
                                         <td>
                                             <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
                                             <a href="" button type="button" class="btn btn-outline-warning">Delete</button></a>
-                                            <a href="" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                            <a href="{{ route('task.show') }}" button type="button" class="btn btn-outline-danger">Show</button></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -52,7 +52,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{{ route('home.store') }}">
+                                    <form method="POST" action="{{ route('workspace.store') }}">
                                         @csrf
                                         <div class="mb-3">
                                             <label class="col-form-label">Name</label>
