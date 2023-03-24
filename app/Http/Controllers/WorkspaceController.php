@@ -21,4 +21,9 @@ class WorkspaceController extends Controller
 
         return to_route("home");
     }
+
+    public function show(Workspace $workspace)
+    {
+        return view("workspace.show", compact('workspace'));
+    }
 }
