@@ -8,7 +8,7 @@
                 <div class="card-header">Add New Type of Task</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('task.store') }}">
+                    <form method="POST" action="{{ route('task.store', $workspace) }}">
                         @csrf
                         <div class="mb-3">
                             <label class="col-form-label">Name</label>
@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <a href="{{ route('task.show') }}" button type="button" class="btn btn-outline-secondary">Back</button></a>
+                            <a href="{{ route('workspace.show') }}" button type="button" class="btn btn-outline-secondary">Back</button></a>
                             <button type="submit" class="btn btn-outline-primary">Add</button>
                             <button type="button" class="btn btn-outline-danger">Clear</button>
                         </div>
