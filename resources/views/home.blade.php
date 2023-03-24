@@ -34,7 +34,7 @@
                                         <td>
                                             <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
                                             <a href="" button type="button" class="btn btn-outline-warning">Delete</button></a>
-                                            <a href="{{ route('task.show') }}" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                            <a href="{{ route('workspace.show', $workspace) }}" button type="button" class="btn btn-outline-danger">Show</button></a>
                                         </td>
                                     </tr>
                                     @endforeach
