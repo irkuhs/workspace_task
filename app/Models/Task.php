@@ -13,7 +13,7 @@ class Task extends Model
 
     protected $fillable =
     [
-        'workspaces_id',
+        'workspace_id',
         'name',
         'datetime',
         'status'
@@ -21,6 +21,6 @@ class Task extends Model
 
     public function workspace()
     {
-        return $this->belongsTo(Workspace::class, 'workspaces_id');
+        return $this->belongsTo(Workspace::class, 'workspace_id');
     }
 }
