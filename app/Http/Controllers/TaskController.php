@@ -18,17 +18,18 @@ class TaskController extends Controller
         return view('task.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Workspace $workspace)
     {
         Task::create(
             [
-                'workspace_id'=> $request->id,
+                'workspace_id'=> $workspace->id,
+                'user_id' => auth()->user()->id,
                 'name'=> $request-> name,
                 'datetime' => $request -> datetime,
                 'status' => $request->status,
             ]
             );
 
-        return to_route("task.show");
+        return to_route("workspace.show");
     }
 }
