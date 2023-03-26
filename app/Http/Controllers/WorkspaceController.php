@@ -24,6 +24,14 @@ class WorkspaceController extends Controller
 
     public function show(Workspace $workspace)
     {
-        return view("workspace.show", compact('workspace'));
+        $task = $workspace->task;
+        return view('workspace.show', compact('workspace','task'));
+    }
+
+    public function delete( Workspace $workspace)
+    {
+        $workspace->delete();
+
+        return redirect()->route("home");
     }
 }
