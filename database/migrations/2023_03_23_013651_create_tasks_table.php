@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('workspaces_id')->constrained('workspaces');
+            $table->foreignId('workspaces_id')->constrained('workspaces')->onDelete('cascade');
             $table->string('name');
             $table->datetime('datetime');
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
