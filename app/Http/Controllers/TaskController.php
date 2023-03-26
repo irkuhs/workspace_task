@@ -30,4 +30,12 @@ class TaskController extends Controller
 
         return to_route("workspace.show", compact('workspace'));
     }
+
+    public function delete(Workspace $workspace, Task $task)
+    {
+        $task->workspace()->delete();
+        $task->delete();
+
+        return redirect()->route("workspace.show", compact('workspace'));
+    }
 }
