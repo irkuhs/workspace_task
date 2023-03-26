@@ -24,7 +24,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //workspace
 Route::post('/workspace/store', [App\Http\Controllers\WorkspaceController::class, 'store'])->name('workspace.store');
 Route::get('/workspace/show/{workspace}', [App\Http\Controllers\WorkspaceController::class, 'show'])->name('workspace.show');
+Route::get('/workspace/delete/{workspace}', [App\Http\Controllers\WorkspaceController::class, 'delete'])->name('workspace.delete');
 
 //task
 Route::get('/task/create/{workspace}', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 Route::post('/task/store/{workspace}', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
+Route::get('/task/delete/{workspace}/{task}', [App\Http\Controllers\TaskController::class, 'delete'])->name('task.delete');
