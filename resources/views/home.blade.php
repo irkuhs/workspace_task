@@ -15,7 +15,7 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Date Time</th>
+                                        <th scope="col">Works Duration before</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -26,15 +26,10 @@
                                         <th scope="row">{{ $key+1}}</th>
                                         <td>{{ $workspace->name}}</td>
                                         <td>{{ $workspace->datetime}}</td>
-                                        @if ($workspace->status == '0')
-                                            <td>Done</td>
-                                            @else
-                                            <td>Pending</td>
-                                        @endif
+                                        <td>{{ $workspace->status}}</td>
                                         <td>
-                                            <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
-                                            <a href="" button type="button" class="btn btn-outline-warning">Delete</button></a>
                                             <a href="{{ route('workspace.show', $workspace) }}" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                            <a href="{{ route('workspace.delete', $workspace) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -59,16 +54,12 @@
                                             <input type="text" class="form-control" name="name" placeholder="Workspace Name">
                                         </div>
                                         <div class="mb-3">
-                                            <label class="col-form-label">Date</label>
+                                            <label class="col-form-label">Works Duration before</label>
                                             <input type="datetime-local" class="form-control" name="datetime">
                                         </div>
                                         <div class="mb-3">
                                             <label class="col-form-label">Status:</label>
-                                            <select name="status" class="form-control" id="status">
-                                                <option selected value="" disabled selected hidden></option>
-                                                <option value="0">Done</option>
-                                                <option value="1">Pending</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="status" value="pending" readonly>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
