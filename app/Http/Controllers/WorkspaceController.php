@@ -28,10 +28,27 @@ class WorkspaceController extends Controller
         return view('workspace.show', compact('workspace','task'));
     }
 
-    public function delete( Workspace $workspace)
+    public function delete(Workspace $workspace)
     {
         $workspace->task()->delete();
         $workspace->delete();
+
+        return redirect()->route("home");
+    }
+
+    public function edit(Workspace $workspace)
+    {
+        return view('workspace.update',  compact('workspace'));
+    }
+
+    public function update(Request $request, Workspace $workspace)
+    {
+        $workspace->update([
+            'user_id'=> auth()->user()->id,
+            'name'=> $request-> name,
+            'datetime' => $request -> datetime,
+            'status' => $request->status,
+        ]);
 
         return redirect()->route("home");
     }
