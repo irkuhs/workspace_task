@@ -30,6 +30,7 @@ class WorkspaceController extends Controller
 
     public function delete( Workspace $workspace)
     {
+        $workspace->task()->delete();
         $workspace->delete();
 
         return redirect()->route("home");
