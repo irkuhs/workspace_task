@@ -30,3 +30,4 @@ Route::get('/workspace/delete/{workspace}', [App\Http\Controllers\WorkspaceContr
 Route::get('/task/create/{workspace}', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 Route::post('/task/store/{workspace}', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
 Route::get('/task/delete/{workspace}/{task}', [App\Http\Controllers\TaskController::class, 'delete'])->name('task.delete');
+Route::get('/task/status/{workspace}/{task}', [App\Http\Controllers\TaskController::class, 'status'])->name('task.status');
