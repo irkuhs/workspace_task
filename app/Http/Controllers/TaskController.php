@@ -33,9 +33,19 @@ class TaskController extends Controller
 
     public function delete(Workspace $workspace, Task $task)
     {
-        $task->workspace()->delete();
         $task->delete();
 
         return redirect()->route("workspace.show", compact('workspace'));
+    }
+
+    public function status(Request $request, Workspace $workspace, Task $task)
+    {
+        $status = Task::where('workspaces_id',$workspace->id);
+
+        $status->update([
+            'status' => $request->status="done"
+        ]);
+
+        return redirect()->route("workspace.show", compact('workspace', 'task'));
     }
 }
