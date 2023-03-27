@@ -32,6 +32,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('task.delete', [$workspace,$task]) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
+                                            <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
                                         </td>
                                         @else
                                         <td>
