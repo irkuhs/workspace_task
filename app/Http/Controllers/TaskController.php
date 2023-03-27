@@ -40,7 +40,7 @@ class TaskController extends Controller
 
     public function status(Request $request, Workspace $workspace, Task $task)
     {
-        $status = Task::where('workspaces_id',$workspace->id);
+        $status = Task::where('workspaces_id',$workspace->id)->where('id',$task->id);
 
         $status->update([
             'status' => $request->status="done"
