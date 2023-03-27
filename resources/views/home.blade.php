@@ -26,12 +26,20 @@
                                         <th scope="row">{{ $key+1}}</th>
                                         <td>{{ $workspace->name}}</td>
                                         <td>{{ $workspace->datetime}}</td>
-                                        <td>{{ $workspace->status}}</td>
-                                        <td>
-                                            <a href="{{ route('workspace.show', $workspace) }}" button type="button" class="btn btn-outline-danger">Show</button></a>
-                                            <a href="{{ route('workspace.delete', $workspace) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
-                                            <a href="" button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#editWorkspaceModal">Edit</button></a>
-                                        </td>
+                                        @if ($workspace->status == "pending")
+                                            <td>Pending</td>
+                                            <td>
+                                                <a href="{{ route('workspace.show', $workspace) }}" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                                <a href="{{ route('workspace.delete', $workspace) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
+                                                <a href="{{ route('workspace.edit', $workspace) }}" button type="button" class="btn btn-outline-info">Edit</button></a>
+                                            </td>
+                                            @else
+                                                <td>Done</td>
+                                                <td>
+                                                    <a href="{{ route('workspace.show', $workspace) }}" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                                    <a href="{{ route('workspace.delete', $workspace) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
+                                                </td>
+                                        @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -57,39 +65,6 @@
                                         <div class="mb-3">
                                             <label class="col-form-label">Works Duration before</label>
                                             <input type="datetime-local" class="form-control" name="datetime">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="col-form-label">Status:</label>
-                                            <input type="text" class="form-control" name="status" value="pending" readonly>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-outline-primary">Add</button>
-                                            <button type="button" class="btn btn-outline-danger">Clear</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal fade" id="editWorkspaceModal" tabindex="-1" aria-labelledby="editWorkspaceModal" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="editWorkspaceModal">Workspace Task {{$workspace->name}}</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form method="" action="">
-                                        @csrf
-                                        <div class="mb-3">
-                                            <label class="col-form-label">Name</label>
-                                            <input type="text" class="form-control" name="name" placeholder="{{$workspace->name}}">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="col-form-label">Works Duration before</label>
-                                            <input type="datetime-local" class="form-control" name="datetime" placeholder="{{$workspace->datetime}}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="col-form-label">Status:</label>
