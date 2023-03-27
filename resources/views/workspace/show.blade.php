@@ -9,7 +9,6 @@
                     <div class="card-body">
                         <a href="{{route('home')}}" button type="button" class="btn btn-outline-danger">Back</button></a>
                         <a href="{{route('task.create', $workspace)}}" button type="button" class="btn btn-outline-primary">Add Task</button></a>
-                        <a href="" button type="button" class="btn btn-outline-info">Edit</button></a>
                     </div>
                     <table class="table table-hover">
                         <thead>
@@ -27,11 +26,21 @@
                                         <th scope="row">{{ $key+1}}</th>
                                         <td>{{ $task->name}}</td>
                                         <td>{{ $task->datetime}}</td>
-                                        <td>{{ $task->status}}</td>
+                                        @if ($task->status == "pending")
                                         <td>
-                                            <a href="" button type="button" class="btn btn-outline-danger">Show</button></a>
+                                            <a href="{{ route('task.status', [$workspace,$task]) }}" button type="button" class="btn btn-outline-danger">Pending</button></a>
+                                        </td>
+                                        <td>
                                             <a href="{{ route('task.delete', [$workspace,$task]) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
                                         </td>
+                                        @else
+                                        <td>
+                                            <button type="button" class="btn btn-outline-danger" disabled>Done</button>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('task.delete', [$workspace,$task]) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
+                                        </td>
+                                        @endif
                                     </tr>
                             @endforeach
                         </tbody>
