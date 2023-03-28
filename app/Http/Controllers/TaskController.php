@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
-use App\Http\Requests\TaskRequest;
 use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
 
@@ -13,12 +12,12 @@ class TaskController extends Controller
 {
     public function create(Workspace $workspace)
     {
+        //$this->authorize('create', $workspace);
         return view('task.create', compact('workspace'));
     }
 
     public function store(TaskStoreRequest $request, Workspace $workspace)
     {
-
         $duedate['due_date'] = $workspace->datetime;
 
         Task::create(
@@ -35,6 +34,7 @@ class TaskController extends Controller
 
     public function delete(Workspace $workspace, Task $task)
     {
+        $this->authorize('delete', $workspace);
         $task->delete();
 
         return redirect()->route("workspace.show", compact('workspace'));
@@ -53,6 +53,7 @@ class TaskController extends Controller
 
     public function edit(Workspace $workspace, Task $task)
     {
+        $this->authorize('update', $workspace, $task);
         return view('task.update', compact('workspace', 'task'));
     }
 
