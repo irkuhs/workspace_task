@@ -6,6 +6,8 @@ use App\Models\Task;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use App\Http\Requests\TaskRequest;
+use App\Http\Requests\TaskStoreRequest;
+use App\Http\Requests\TaskUpdateRequest;
 
 class TaskController extends Controller
 {
@@ -14,7 +16,7 @@ class TaskController extends Controller
         return view('task.create', compact('workspace'));
     }
 
-    public function store(Request $request, Workspace $workspace)
+    public function store(TaskStoreRequest $request, Workspace $workspace)
     {
 
         $duedate['due_date'] = $workspace->datetime;
@@ -54,7 +56,7 @@ class TaskController extends Controller
         return view('task.update', compact('workspace', 'task'));
     }
 
-    public function update(Request $request,Workspace $workspace, Task $task)
+    public function update(TaskUpdateRequest $request,Workspace $workspace, Task $task)
     {
         $task->update([
             'name'=> $request-> name,
