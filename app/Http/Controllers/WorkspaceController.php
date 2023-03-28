@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use App\Http\Requests\WorkspaceStoreRequest;
+use App\Http\Requests\WorkspaceUpdateRequest;
 
 class WorkspaceController extends Controller
 {
-    public function store(Request $request)
+    public function store(WorkspaceStoreRequest $request)
     {
         //dd($request->all());
         Workspace::create(
@@ -41,7 +43,7 @@ class WorkspaceController extends Controller
         return view('workspace.update', compact('workspace'));
     }
 
-    public function update(Request $request, Workspace $workspace)
+    public function update(WorkspaceUpdateRequest $request, Workspace $workspace)
     {
         $workspace->update([
             'user_id'=> auth()->user()->id,
