@@ -38,7 +38,7 @@ class WorkspaceController extends Controller
 
     public function edit(Workspace $workspace)
     {
-        return view('workspace.update',  compact('workspace'));
+        return view('workspace.update', compact('workspace'));
     }
 
     public function update(Request $request, Workspace $workspace)
