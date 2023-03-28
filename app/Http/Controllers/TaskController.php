@@ -48,4 +48,19 @@ class TaskController extends Controller
 
         return redirect()->route("workspace.show", compact('workspace', 'task'));
     }
+
+    public function edit(Workspace $workspace, Task $task)
+    {
+        return view('task.update', compact('workspace', 'task'));
+    }
+
+    public function update(Request $request,Workspace $workspace, Task $task)
+    {
+        $task->update([
+            'name'=> $request-> name,
+            'datetime' => $request -> datetime,
+        ]);
+
+        return redirect()->route("workspace.show", compact('workspace', 'task'));
+    }
 }
