@@ -27,6 +27,7 @@ Route::get('/workspace/show/{workspace:uuid}', [App\Http\Controllers\WorkspaceCo
 Route::get('/workspace/delete/{workspace}', [App\Http\Controllers\WorkspaceController::class, 'delete'])->name('workspace.delete');
 Route::get('/workspace/edit/{workspace}', [App\Http\Controllers\WorkspaceController::class, 'edit'])->name('workspace.edit');
 Route::post('/workspace/update/{workspace}', [App\Http\Controllers\WorkspaceController::class, 'update'])->name('workspace.update');
+Route::get('/workspace/search', [App\Http\Controllers\WorkspaceController::class, 'search'])->name('workspace.search');
 
 //task
 Route::get('/task/create/{workspace}', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
