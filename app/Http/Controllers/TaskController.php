@@ -34,7 +34,7 @@ class TaskController extends Controller
 
     public function delete(Workspace $workspace, Task $task)
     {
-        $this->authorize('delete', $workspace);
+        $this->authorize('delete', $workspace, $task);
         $task->delete();
 
         return redirect()->route("workspace.show", compact('workspace'));
