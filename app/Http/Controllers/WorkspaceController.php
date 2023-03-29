@@ -58,4 +58,18 @@ class WorkspaceController extends Controller
 
         return redirect()->route("home");
     }
+
+    public function search(Request $request)
+    {
+        if($request->keyword){
+            $workspace = Workspace::query()
+                        ->where('user_id',  auth()->user()->id)
+                        ->where('name','LIKE','%'.$request->keyword.'%');
+        }
+        else
+        {
+            $workspace = auth()->user()->inventories()->paginate(5);
+        }
+        return view('home',compact('workspace'));
+    }
 }
