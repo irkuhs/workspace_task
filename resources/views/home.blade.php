@@ -7,8 +7,17 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard milik ')}}{{ Auth::user()->name }}</div>
                     <div class="card-body">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addWorkspaceModal">Add Work</button>
+                        <form action="{{route('workspace.search')}}" method="GET">
+                            <div class="input-group-append mt-2 p-2">
+                                <input type="text" class="form-control" name="keyword" placeholder="Search by Inventory Name">
+                                <div class="input-group-append mt-2">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                    <a href="{{route('home')}}" button class="btn btn-primary" type="submit">Refresh</button></a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addWorkspaceModal">Add Work</button>
+                                </div>
+                            </div>
+                        </form>
                         <div class="card mt-2">
                             <table class="table table-hover">
                                 <thead>
