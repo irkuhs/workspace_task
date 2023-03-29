@@ -17,7 +17,8 @@ class Workspace extends Model
         'user_id',
         'name',
         'datetime',
-        'status'
+        'status',
+        'uuid',
     ];
 
     public function user()
