@@ -17,7 +17,7 @@ class WorkspaceController extends Controller
                 'user_id'=> auth()->user()->id,
                 'name'=> $request-> name,
                 'datetime' => $request -> datetime,
-                'status' => $request->status,
+                'status' => $request->status
             ]
             );
 
