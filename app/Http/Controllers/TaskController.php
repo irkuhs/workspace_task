@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\Workspace;
+use App\Mail\TaskDoneMail;
+use App\Mail\TaskCreateMail;
+use App\Mail\TaskDeleteMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
 
@@ -29,6 +33,8 @@ class TaskController extends Controller
             ]
             );
 
+        Mail::to($workspace->user)->send(new TaskCreateMail($workspace));
+
         return to_route("workspace.show", compact('workspace'));
     }
 
@@ -36,6 +42,7 @@ class TaskController extends Controller
     {
         $this->authorize('delete', $workspace, $task);
         $task->delete();
+        Mail::to($workspace->user)->send(new TaskDeleteMail($task));
 
         return redirect()->route("workspace.show", compact('workspace'));
     }
@@ -47,6 +54,8 @@ class TaskController extends Controller
         $status->update([
             'status' => $request->status="done"
         ]);
+
+        Mail::to($workspace->user)->send(new TaskDoneMail($task));
 
         return redirect()->route("workspace.show", compact('workspace', 'task'));
     }
