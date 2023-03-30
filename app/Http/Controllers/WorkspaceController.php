@@ -68,7 +68,7 @@ class WorkspaceController extends Controller
         }
         else
         {
-            $workspace = auth()->user()->inventories()->paginate(5);
+            $workspace = auth()->user()->workspace()->paginate(5);
         }
         return view('home',compact('workspace'));
     }
