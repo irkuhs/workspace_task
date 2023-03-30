@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('workspaces_id')->constrained('workspaces')->onDelete('cascade');
             $table->string('name');
+            $table->string('uuid');
             $table->datetime('datetime');
             $table->string('status')->default('pending');
             $table->timestamps();
