@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('uuid');
             $table->datetime('datetime');
             $table->string('status');
+            $table->string('attachment')->nullable();
             $table->timestamps();
         });
     }
