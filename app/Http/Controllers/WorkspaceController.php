@@ -6,18 +6,28 @@ use App\Models\Workspace;
 use Illuminate\Http\Request;
 use App\Http\Requests\WorkspaceStoreRequest;
 use App\Http\Requests\WorkspaceUpdateRequest;
+use Storage;
+use File;
 
 class WorkspaceController extends Controller
 {
     public function store(WorkspaceStoreRequest $request)
     {
+
+        if ($request->hasFile('attachment')) {
+            //rename file
+            $fileName = $request->name.'-'.date('Y-m-d').'.'.$request->attachment->getClientOriginalExtension();
+            //simpan gambar file
+            Storage::disk('public')->put('/workspace/'.$fileName, File::get($request->attachment));
+        }
         //dd($request->all());
         Workspace::create(
             [
                 'user_id'=> auth()->user()->id,
                 'name'=> $request-> name,
                 'datetime' => $request -> datetime,
-                'status' => $request->status
+                'status' => $request->status,
+                'attachment'=>$fileName ?? 'No attachment'
             ]
             );
 
