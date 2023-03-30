@@ -19,6 +19,7 @@ class Workspace extends Model
         'datetime',
         'status',
         'uuid',
+        'attachment'
     ];
 
     public function user()
