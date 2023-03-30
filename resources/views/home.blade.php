@@ -25,6 +25,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Works Duration before</th>
+                                        <th scope="col">Attachment</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -35,6 +36,9 @@
                                         <th scope="row">{{ $key+1}}</th>
                                         <td>{{ $workspace->name}}</td>
                                         <td>{{ $workspace->datetime}}</td>
+                                        <td>
+                                            <a href="{{ asset('storage/workspace/'.$workspace->attachment) }}" target="_blank">{{ $workspace->attachment }}</a>
+                                        </td>
                                         @if ($workspace->status == "pending")
                                             <td>Pending</td>
                                             <td>
@@ -65,7 +69,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="POST" action="{{ route('workspace.store') }}">
+                                    <form method="POST" action="{{ route('workspace.store') }}" enctype="multipart/form-data">
                                         @csrf
                                         @if ($errors->any())
                                             <div class="alert alert-danger">
@@ -88,6 +92,10 @@
                                             <label class="col-form-label">Status:</label>
                                             <input type="text" class="form-control" name="status" value="pending" readonly>
                                         </div>
+                                        <div class="mb-3">
+                                            <label class="col-form-label">Default file input example</label>
+                                            <input class="form-control" type="file" name="attachment">
+                                          </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-outline-primary">Add</button>
