@@ -7,6 +7,7 @@ use App\Models\Workspace;
 use App\Mail\TaskDoneMail;
 use App\Mail\TaskCreateMail;
 use App\Mail\TaskDeleteMail;
+use App\Mail\TaskUpdateMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\TaskStoreRequest;
@@ -73,6 +74,7 @@ class TaskController extends Controller
             'datetime' => $request -> datetime,
         ]);
 
+        Mail::to($workspace->user)->send(new TaskUpdateMail($task));
         return redirect()->route("workspace.show", compact('workspace', 'task'));
     }
 }
