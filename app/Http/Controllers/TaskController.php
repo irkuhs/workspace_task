@@ -9,6 +9,7 @@ use App\Mail\TaskCreateMail;
 use App\Mail\TaskDeleteMail;
 use App\Mail\TaskUpdateMail;
 use Illuminate\Http\Request;
+use App\Mail\TaskPendingMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
@@ -51,13 +52,19 @@ class TaskController extends Controller
     public function status(Request $request, Workspace $workspace, Task $task)
     {
         $status = Task::where('workspaces_id',$workspace->id)->where('id',$task->id);
-
-        $status->update([
-            'status' => $request->status="done"
-        ]);
-
-        Mail::to($workspace->user)->send(new TaskDoneMail($task));
-
+        // dd($task->status);
+        if ($task->status=="pending") {
+            $status->update([
+                'status' => $request->status="done"
+            ]);
+            Mail::to($workspace->user)->send(new TaskDoneMail($task));
+        }
+        elseif ($task->status=="done") {
+            $status->update([
+                'status' => $request->status="pending"
+            ]);
+            Mail::to($workspace->user)->send(new TaskPendingMail($task));
+        }
         return redirect()->route("workspace.show", compact('workspace', 'task'));
     }
 
