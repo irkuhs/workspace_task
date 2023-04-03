@@ -52,7 +52,7 @@ class TaskController extends Controller
     public function status(Request $request, Workspace $workspace, Task $task)
     {
         $status = Task::where('workspaces_id',$workspace->id)->where('id',$task->id);
-        // dd($task->status);
+
         if ($task->status=="pending") {
             $status->update([
                 'status' => $request->status="done"
