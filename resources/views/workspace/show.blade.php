@@ -34,9 +34,9 @@
                                             <a href="{{ route('task.delete', [$workspace,$task]) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
                                             <a href="{{ route('task.edit', [$workspace,$task]) }}" button type="button" class="btn btn-outline-info">Edit</button></a>
                                         </td>
-                                        @else
+                                        @elseif (($task->status == "done"))
                                         <td>
-                                            <button type="button" class="btn btn-outline-danger" disabled>Done</button>
+                                            <a href="{{ route('task.status', [$workspace,$task]) }}" button type="button"  class="btn btn-outline-danger">Done</button></a>
                                         </td>
                                         <td>
                                             <a href="{{ route('task.delete', [$workspace,$task]) }}" button type="button" class="btn btn-outline-warning">Delete</button></a>
