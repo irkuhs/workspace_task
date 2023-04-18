@@ -18,6 +18,8 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+//admin
+Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'indexAdmin'])->name('admin.home')->middleware('role');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

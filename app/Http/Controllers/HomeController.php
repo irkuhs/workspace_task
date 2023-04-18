@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Workspace;
 use App\Models\User;
+use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -27,5 +28,11 @@ class HomeController extends Controller
     {
         $workspace = Workspace::where('user_id', auth()->user()->id)->get();
         return view('home', compact('workspace'));
+    
+    }
+    
+    public function indexAdmin()
+    {
+        return view('admin.home');
     }
 }
